@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | María Monedero Fernandez</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121933;
+      --soft: #1b2447;
+      --text: #f5f7ff;
+      --muted: #b9c0dd;
+      --accent: #7aa2ff;
+      --accent-2: #8ef0d0;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 20px 40px rgba(0,0,0,0.25);
+      --radius: 20px;
+      --max: 1120px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #09101f 0%, #0e1530 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 16, 32, 0.75);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .brand span {
+      color: var(--accent-2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 84px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(122, 162, 255, 0.12);
+      border: 1px solid rgba(122, 162, 255, 0.25);
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 62ch;
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #9c8cff);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .hero-card,
+    .card,
+    .timeline-item,
+    .contact-box {
+      background: rgba(18, 25, 51, 0.9);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 26px;
+    }
+
+    .hero-card h3 {
+      margin-bottom: 14px;
+      font-size: 1.1rem;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-item {
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mini-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    section {
+      padding: 36px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .section-text {
+      color: var(--muted);
+      margin-bottom: 24px;
+      max-width: 70ch;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(142, 240, 208, 0.12);
+      border: 1px solid rgba(142, 240, 208, 0.18);
+      color: var(--accent-2);
+      font-size: 0.9rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .project-type {
+      font-size: 0.85rem;
+      color: var(--accent);
+      background: rgba(122, 162, 255, 0.1);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .project-list {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .project-list li + li {
+      margin-top: 8px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      padding: 22px;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    .contact-box {
+      padding: 28px;
+      text-align: center;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin: 10px auto 20px;
+      max-width: 60ch;
+    }
+
+    footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        gap: 16px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        padding-top: 58px;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .card,
+      .hero-card,
+      .timeline-item,
+      .contact-box {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#inicio" class="brand">María Monedero Fernández<span>.</span></a>
+      <nav class="nav-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#otras-cosas">Otros Intereses</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Portfolio profesional</div>
+          <h1>Analítica, datos y desarrollo con una presentación clara y profesional.</h1>
+          <p>
+            Soy María Monedero Fernández, Controller Financiero y de Gestión. Este espacio y este espacio reúne una breve presentación mis proyectos en SQL, Power BI, Excel, Python
+            y otras áreas en las que también trabajo.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+            <a class="btn btn-secondary" href="#contacto">Contactar</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3>Resumen rápido</h3>
+          <div class="mini-list">
+            <div class="mini-item">
+              <strong>Perfil</strong>
+              <span>Orientado a análisis, visualización y resolución de problemas.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Stack principal</strong>
+              <span>SQL, Power BI, Excel, Python.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Objetivo</strong>
+              <span>Convertir datos e ideas en proyectos claros, útiles y bien presentados, para la toma de decisiones estratégicas.</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="sobre-mi">
+      <div class="container">
+        <h2 class="section-title">Sobre mí</h2>
+        <p class="section-text">
+          Aquí puedes incluir una presentación breve: quién eres, qué haces, en qué te especializas y qué tipo de valor aportas.
+          Este bloque está pensado para sustituirse fácilmente por tu texto real.
+        </p>
+
+        <div class="about">
+          <article class="card">
+            <h3>Presentación</h3>
+            <p>
+              Me dedico al trabajo con datos, la organización de información y la creación de proyectos que combinan análisis,
+              claridad visual y utilidad práctica. Me interesa construir soluciones sencillas, bien pensadas y fáciles de entender.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Habilidades principales</h3>
+            <p>
+              Estas son las áreas que puedes destacar para que el visitante entienda tu perfil de un vistazo.
+            </p>
+            <div class="skills">
+              <span class="tag">SQL</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Python</span>
+              <span class="tag">Visualización</span>
+              <span class="tag">Análisis de datos</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="container">
+        <h2 class="section-title">Proyectos</h2>
+        <p class="section-text">
+          Cada bloque representa un área de trabajo. Puedes sustituir los textos de ejemplo por proyectos reales, dashboards,
+          ejercicios, automatizaciones o casos prácticos.
+        </p>
+
+        <div class="projects-grid">
+          <article class="card">
+            <div class="project-head">
+              <div>
+                <h3>Proyectos SQL</h3>
+              </div>
+              <span class="project-type">SQL</span>
+            </div>
+            <ul class="project-list">
+              <li>Consultas con JOIN, GROUP BY, subconsultas y funciones agregadas.</li>
+              <li>Análisis de bases de datos orientado a negocio.</li>
+              <li>Ejercicios prácticos y resolución de casos reales.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="project-head">
+              <div>
+                <h3>Proyectos Power BI</h3>
+              </div>
+              <span class="project-type">Power BI</span>
+            </div>
+            <ul class="project-list">
+              <li>Dashboards interactivos con métricas claras y diseño limpio.</li>
+              <li>Modelado de datos y creación de medidas.</li>
+              <li>Informes enfocados en facilitar la toma de decisiones.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="project-head">
+              <div>
+                <h3>Proyectos Excel</h3>
+              </div>
+              <span class="project-type">Excel</span>
+            </div>
+            <ul class="project-list">
+              <li>Automatización de tareas y organización de información.</li>
+              <li>Modelos, tablas dinámicas y control de datos.</li>
+              <li>Plantillas funcionales y fáciles de mantener.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="project-head">
+              <div>
+                <h3>Proyectos Python</h3>
+              </div>
+              <span class="project-type">Python</span>
+            </div>
+            <ul class="project-list">
+              <li>Scripts para análisis y transformación de datos.</li>
+              <li>Automatización de procesos repetitivos.</li>
+              <li>Pequeñas soluciones orientadas a productividad y aprendizaje.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="otras-cosas">
+      <div class="container">
+        <h2 class="section-title">Otras cosas a las que me dedico</h2>
+        <p class="section-text">
+          Este apartado te permite mostrar intereses, actividades complementarias, formación o cualquier otro trabajo relevante.
+        </p>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <h3>Aprendizaje continuo</h3>
+            <p>
+              Formación constante en herramientas de datos, programación y mejora de procesos.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Proyectos personales</h3>
+            <p>
+              Desarrollo de ideas propias para practicar, mejorar habilidades y construir experiencia real.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <h3>Otras áreas profesionales</h3>
+            <p>
+              Espacio para añadir otras responsabilidades, colaboraciones, intereses o servicios que también quieras destacar.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="contact-box">
+          <h2 class="section-title">Contacto</h2>
+          <p>
+            Puedes añadir aquí tu correo, LinkedIn, GitHub o cualquier canal de contacto. También puedes convertir esta sección
+            en un bloque final con llamada a la acción para colaborar o ver más trabajos.
+          </p>
+          <div class="cta-row" style="justify-content:center;">
+            <a class="btn btn-primary" href="mailto:tuemail@correo.com">Escríbeme</a>
+            <a class="btn btn-secondary" href="#inicio">Volver arriba</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 María Monedero · Portfolio personal
+    </div>
+  </footer>
+</body>
+</html>
