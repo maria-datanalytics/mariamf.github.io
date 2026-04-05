@@ -104,6 +104,7 @@
       color: var(--accent);
       font-size: 0.9rem;
       margin-bottom: 20px;
+      margin-right: 8px;
     }
 
     h1 {
@@ -240,6 +241,16 @@
       gap: 20px;
     }
 
+    .project-card {
+      cursor: pointer;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(122, 162, 255, 0.35);
+    }
+
     .project-head {
       display: flex;
       justify-content: space-between;
@@ -264,6 +275,26 @@
 
     .project-list li + li {
       margin-top: 8px;
+    }
+
+    .project-links {
+      margin-top: 18px;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .project-links a {
+      color: var(--accent-2);
+      font-size: 0.95rem;
+      font-weight: 500;
+      width: fit-content;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
     }
 
     .timeline {
@@ -340,7 +371,7 @@
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a href="#inicio" class="brand">María Monedero</span></a>
+      <a href="#inicio" class="brand">María Monedero</a>
       <nav class="nav-links">
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#proyectos">Proyectos</a>
@@ -356,10 +387,9 @@
         <div>
           <div class="badge">Business Controller</div>
           <div class="badge">Data Analytics</div>
-          <h1>De datos a decisiones
-          </h1>
+          <h1>De datos a decisiones</h1>
           <p>
-            Trabajo con SQL, Power BI, Excel y Python para analizar datos, optimizar los procesos y aportar la mayor claridad en la toma de decisiones estratégicas.
+            Trabajo con SQL, Power BI, Excel y Python para analizar datos, optimizar procesos y aportar claridad en la toma de decisiones estratégicas.
           </p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
@@ -380,7 +410,7 @@
             </div>
             <div class="mini-item">
               <strong>Impacto</strong>
-              <span>Decisiones Estratégicas, KPIS, Eficiencia</span>
+              <span>Decisiones estratégicas, KPIs, eficiencia</span>
             </div>
           </div>
         </aside>
@@ -391,20 +421,19 @@
       <div class="container">
         <h2 class="section-title">Sobre mí</h2>
         <p class="section-text">
-          Los valores del deporte y la música me han acompañado a lo largo de mi vida enseñándome el valor de ser constante, cuidar los detalles y mejorar cada día.
+          Los valores del deporte y la música me han acompañado a lo largo de mi vida, enseñándome el valor de ser constante, cuidar los detalles y mejorar cada día.
         </p>
 
         <div class="about">
           <article class="card">
             <h3>Presentación</h3>
             <p>
-              Business Controller con enfoque Data Driven, con experiencia en Excel, SQL, Power Bi, Python para transformar datos en información, optimizar procesos, analizar desviaciones y aportar valor en las decisiones estratégicas.
+              Business Controller con enfoque data-driven, con experiencia en Excel, SQL, Power BI y Python para transformar datos en información, optimizar procesos, analizar desviaciones y aportar valor en las decisiones estratégicas.
             </p>
           </article>
 
           <article class="card">
             <h3>Habilidades principales</h3>
-            </p>
             <div class="skills">
               <span class="tag">SQL</span>
               <span class="tag">Power BI</span>
@@ -427,64 +456,89 @@
       <div class="container">
         <h2 class="section-title">Proyectos</h2>
         <p class="section-text">
-          Proyectos principales por categoría: 
+          Haz clic en cada tarjeta para ver ejemplos de proyectos.
         </p>
 
         <div class="projects-grid">
-          <article class="card">
+
+          <article class="card project-card" onclick="toggleProjects('sql-projects')">
             <div class="project-head">
               <div>
                 <h3>Proyectos SQL</h3>
               </div>
               <span class="project-type">SQL</span>
             </div>
+
             <ul class="project-list">
               <li>Consultas con JOIN, GROUP BY, subconsultas y funciones agregadas.</li>
               <li>Análisis de bases de datos orientado a negocio.</li>
               <li>Ejercicios prácticos y resolución de casos reales.</li>
             </ul>
+
+            <div class="project-links" id="sql-projects">
+              <a href="https://github.com/TU-USUARIO/proyecto-sql-1" target="_blank">Proyecto 1 - Análisis de ventas</a>
+              <a href="https://github.com/TU-USUARIO/proyecto-sql-2" target="_blank">Proyecto 2 - Base de datos de clientes</a>
+            </div>
           </article>
 
-          <article class="card">
+          <article class="card project-card" onclick="toggleProjects('powerbi-projects')">
             <div class="project-head">
               <div>
                 <h3>Proyectos Power BI</h3>
               </div>
               <span class="project-type">Power BI</span>
             </div>
+
             <ul class="project-list">
               <li>Dashboards interactivos con métricas claras y diseño limpio.</li>
               <li>Modelado de datos y creación de medidas.</li>
               <li>Informes enfocados en facilitar la toma de decisiones.</li>
             </ul>
+
+            <div class="project-links" id="powerbi-projects">
+              <a href="https://github.com/TU-USUARIO/proyecto-powerbi-1" target="_blank">Proyecto 1 - Dashboard comercial</a>
+              <a href="https://github.com/TU-USUARIO/proyecto-powerbi-2" target="_blank">Proyecto 2 - Informe financiero</a>
+            </div>
           </article>
 
-          <article class="card">
+          <article class="card project-card" onclick="toggleProjects('excel-projects')">
             <div class="project-head">
               <div>
                 <h3>Proyectos Excel</h3>
               </div>
               <span class="project-type">Excel</span>
             </div>
+
             <ul class="project-list">
               <li>Automatización de tareas y organización de información.</li>
               <li>Modelos, tablas dinámicas y control de datos.</li>
               <li>Plantillas funcionales y fáciles de mantener.</li>
             </ul>
+
+            <div class="project-links" id="excel-projects">
+              <a href="https://github.com/TU-USUARIO/proyecto-excel-1" target="_blank">Proyecto 1 - Plantilla de reporting</a>
+              <a href="https://github.com/TU-USUARIO/proyecto-excel-2" target="_blank">Proyecto 2 - Control de KPIs</a>
+            </div>
           </article>
 
-          <article class="card">
+          <article class="card project-card" onclick="toggleProjects('python-projects')">
             <div class="project-head">
               <div>
                 <h3>Proyectos Python</h3>
               </div>
               <span class="project-type">Python</span>
             </div>
+
             <ul class="project-list">
               <li>Scripts para análisis y transformación de datos.</li>
               <li>Automatización de procesos repetitivos.</li>
               <li>Pequeñas soluciones orientadas a productividad y aprendizaje.</li>
             </ul>
+
+            <div class="project-links" id="python-projects">
+              <a href="https://github.com/TU-USUARIO/proyecto-python-1" target="_blank">Proyecto 1 - Limpieza de datos</a>
+              <a href="https://github.com/TU-USUARIO/proyecto-python-2" target="_blank">Proyecto 2 - Automatización de informes</a>
+            </div>
           </article>
         </div>
       </div>
@@ -497,33 +551,46 @@
           A continuación, algunos de mis proyectos personales:
         </p>
         <div class="timeline">
+
           <article class="timeline-item">
-            <h3>1ª Banda Musical Corporativa "NovoBand"</h3>
-            <ul class="project-list">
-              <li><strong>Objetivo:</strong> Animar eventos corporativos </li>
-              <li><strong>Habilidades:</strong> Planificación de eventos, Adaptabilidad, Trabajo en equipo y Gestión de la presión </li>
-              <li><strong>Alcance:</strong> 6 músicos, +200 Empleados y +15 Managers/Directivos </li>
-              <li><strong>Logros:</strong> Premio por ser la primera iniciativa musical corporativa en España </li>
-            </ul>
+            <img src="img/banda-novoband.jpg" alt="NovoBand" style="width:180px; height:120px; object-fit:cover; border-radius:14px; flex-shrink:0; margin-right:16px;">
+            <div>
+              <h3>1ª Banda Musical Corporativa "NovoBand"</h3>
+              <ul class="project-list">
+                <li><strong>Objetivo:</strong> Animar eventos corporativos </li>
+                <li><strong>Habilidades:</strong> Planificación de eventos, Adaptabilidad, Trabajo en equipo y Gestión de la presión </li>
+                <li><strong>Alcance:</strong> 6 músicos, +200 Empleados y +15 Managers/Directivos </li>
+                <li><strong>Logros:</strong> Premio por ser la primera iniciativa musical corporativa en España </li>
+              </ul>
+            </div>
           </article>
+
           <article class="timeline-item">
-            <h3>Campeonatos de Baloncesto de Madrid y de España</h3>
-            <ul class="project-list">
-              <li><strong>Objetivo:</strong> Optimización del rendimiento físico y mental en entornos competitivos</li>
-              <li><strong>Habilidades:</strong> Trabajo en equipo, Disciplina, Persistencia y Toma de decisiones bajo presión</li>
-              <li><strong>Alcance:</strong> +18 años compitiendo, +5 equipos diferentes, + 12 Torneos/Campeonatos</li>
-              <li><strong>Logros:</strong> Mejor deportista universitaria, tercer mejor equipo de Madrid y sexto de España </li>
-            </ul>
+            <img src="img/1680248574968.jfif" alt="Campeonatos de Madrid y España" style="width:180px; height:120px; object-fit:cover; border-radius:14px; flex-shrink:0; margin-right:16px;">
+            <div>
+              <h3>Campeonatos de Baloncesto de Madrid y de España</h3>
+              <ul class="project-list">
+                <li><strong>Objetivo:</strong> Optimización del rendimiento físico y mental en entornos competitivos</li>
+                <li><strong>Habilidades:</strong> Trabajo en equipo, Disciplina, Persistencia y Toma de decisiones bajo presión</li>
+                <li><strong>Alcance:</strong> +18 años compitiendo, +5 equipos diferentes, + 12 Torneos/Campeonatos</li>
+                <li><strong>Logros:</strong> Mejor deportista universitaria, tercer mejor equipo de Madrid y sexto de España </li>
+              </ul>
+            </div>
           </article>
+
           <article class="timeline-item">
-            <h3>1ª Feria de Empleo en la Universidad de Alcalá</h3>
-            <ul class="project-list">
-              <li><strong>Objetivo:</strong> Reducir la brecha entre el mundo universitario y laboral</li>
-              <li><strong>Habilidades:</strong> Organización y Liderazgo de equipos, Creatividad, Gestión de Personas y Orientación al Detalle</li>
-              <li><strong>Alcance:</strong> 8 delegados, +350 estudiantes y 10 partners (KPMG, Microsoft, Mapfre...)</li>
-              <li><strong>Logros:</strong> Consolidación como un evento anual recurrente que sigue realizandose actualmente</li>
-            </ul>
+            <img src="img/feria-empleo.jpg" alt="Feria de Empleo Universidad Alcalá" style="width:180px; height:120px; object-fit:cover; border-radius:14px; flex-shrink:0; margin-right:16px;">
+            <div>
+              <h3>1ª Feria de Empleo en la Universidad de Alcalá</h3>
+              <ul class="project-list">
+                <li><strong>Objetivo:</strong> Reducir la brecha entre el mundo universitario y laboral</li>
+                <li><strong>Habilidades:</strong> Organización y Liderazgo de equipos, Creatividad, Gestión de Personas y Orientación al Detalle</li>
+                <li><strong>Alcance:</strong> 8 delegados, +350 estudiantes y 10 partners (KPMG, Microsoft, Mapfre...)</li>
+                <li><strong>Logros:</strong> Consolidación como un evento anual recurrente que sigue realizándose actualmente</li>
+              </ul>
+            </div>
           </article>
+
         </div>
       </div>
     </section>
@@ -532,7 +599,6 @@
       <div class="container">
         <div class="contact-box">
           <h2 class="section-title">Contacto</h2>
-          </p>
           <div class="cta-row" style="justify-content:center;">
             <a class="btn btn-primary" href="https://www.linkedin.com/in/maria-monedero-fernandez-controller/" target="_blank">Ver mi LinkedIn</a>
             <a class="btn btn-secondary" href="#inicio">Volver arriba</a>
@@ -547,5 +613,24 @@
       © 2026 María Monedero · Portfolio
     </div>
   </footer>
+
+  <script>
+    function toggleProjects(id) {
+      const allProjects = document.querySelectorAll('.project-links');
+      const currentProject = document.getElementById(id);
+
+      allProjects.forEach(project => {
+        if (project !== currentProject) {
+          project.style.display = 'none';
+        }
+      });
+
+      if (currentProject.style.display === 'flex') {
+        currentProject.style.display = 'none';
+      } else {
+        currentProject.style.display = 'flex';
+      }
+    }
+  </script>
 </body>
 </html>
